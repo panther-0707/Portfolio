@@ -1,7 +1,7 @@
 // Typing effect
 const lines = [
   "Head of DevOps @ EUFS",
-  "Computer Science @ Edinburgh",
+  "Computer Science @ The University of Edinburgh",
   "Security-minded dev tooling",
 ];
 const el = document.getElementById("typed");
