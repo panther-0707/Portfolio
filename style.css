@@ -104,7 +104,8 @@ h3 { margin: 0 0 6px; }
 .timeline li { margin-bottom: 6px; }
 
 /* PROJECT CARDS */
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; }
+/* Two columns on desktop, one on phones. min() stops the cards overflowing narrow screens. */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 22px; }
 .card {
   background: var(--bg2); border: 1px solid var(--border);
   border-radius: var(--radius); overflow: hidden;
@@ -117,6 +118,40 @@ h3 { margin: 0 0 6px; }
 .tags { color: var(--accent); font-family: "Fira Code", Consolas, monospace; font-size: .78rem; margin: 0 0 10px; }
 .card p { color: var(--muted); font-size: .95rem; margin: 0 0 10px; }
 .links { margin-top: auto !important; display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+
+/* FEATURED PROJECT CARD: spans the full width of the grid */
+.card.featured { grid-column: 1 / -1; }
+.card.featured img { height: 260px; }
+.card.featured .body { padding: 24px; }
+.card.featured h3 { font-size: 1.35rem; }
+.badge {
+  align-self: flex-start;
+  color: var(--accent); border: 1px solid var(--accent);
+  border-radius: 999px; padding: 2px 10px; margin-bottom: 10px;
+  font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+}
+.flow {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  margin: 4px 0 18px;
+  font-family: "Fira Code", Consolas, monospace; font-size: .78rem;
+}
+.flow span {
+  background: var(--bg); border: 1px solid var(--border); color: var(--text);
+  border-radius: 999px; padding: 3px 11px;
+}
+.flow i { color: var(--accent); font-style: normal; }
+.cols { display: grid; grid-template-columns: 1.1fr 1fr; gap: 30px; }
+.cols ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: .95rem; }
+.cols li { margin-bottom: 8px; }
+.cols b { color: var(--text); }
+.card.featured .stats { margin: 16px 0 18px; }
+.card.featured .stats div { background: var(--bg); padding: 12px 16px; }
+.card.featured .stats b { font-size: 1.5rem; }
+@media (max-width: 760px) {
+  .cols { grid-template-columns: 1fr; gap: 4px; }
+  .card.featured .body { padding: 18px; }
+  .card.featured .stats { grid-template-columns: repeat(2, 1fr); }
+}
 
 /* SKILLS */
 .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }

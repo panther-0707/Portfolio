@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -78,6 +78,47 @@
     <section id="projects">
       <h2>Projects</h2>
       <div class="grid">
+
+        <article class="card featured">
+          <img src="assets/minilb.png" alt="miniLB architecture diagram" loading="lazy" onerror="this.remove()" />
+          <div class="body">
+            <span class="badge">Featured project</span>
+            <h3>miniLB, HTTP Load Balancer with Redis</h3>
+            <p class="tags">C++17 &#183; Boost.Asio &#183; Redis &#183; CMake &#183; GoogleTest &#183; Docker &#183; GitHub Actions</p>
+
+            <div class="flow" aria-label="Path of a request through miniLB">
+              <span>Client</span><i>&#8594;</i>
+              <span>Parse HTTP</span><i>&#8594;</i>
+              <span>Rate limit</span><i>&#8594;</i>
+              <span>Cache lookup</span><i>&#8594;</i>
+              <span>Pick backend</span><i>&#8594;</i>
+              <span>Proxy + retry</span>
+            </div>
+
+            <div class="cols">
+              <div>
+                <p>A multithreaded HTTP/1.1 reverse proxy and load balancer written in C++17. It accepts many concurrent connections on an asynchronous Boost.Asio event loop, rate-limits clients and serves cached responses from Redis, and forwards everything else to a healthy backend.</p>
+                <p>A background health checker takes failed backends out of rotation and brings them back when they recover. A request that hits a dead backend is retried on another one, and if Redis goes down the proxy keeps serving without cache or rate limiting.</p>
+              </div>
+              <ul>
+                <li><b>Async I/O:</b> one event loop on N threads, one strand per connection, no locks on the request path.</li>
+                <li><b>Balancing:</b> round robin, least connections and weighted, selectable from a YAML config.</li>
+                <li><b>Resilience:</b> health checks, failover with retry, timeouts on every network operation, graceful shutdown.</li>
+                <li><b>Redis:</b> response cache with TTLs and a fixed-window rate limiter, both failing open.</li>
+                <li><b>Observability:</b> live metrics as JSON on <code>/stats</code>.</li>
+              </ul>
+            </div>
+
+            <div class="stats">
+              <div><b>107</b><span>unit tests</span></div>
+              <div><b>25</b><span>integration tests</span></div>
+              <div><b>3</b><span>balancing algorithms</span></div>
+              <div><b>4</b><span>CI jobs with sanitizers</span></div>
+            </div>
+
+            <p class="links"><a href="https://github.com/panther-0707/Redis" target="_blank" rel="noopener">Code &#8599;</a> <a href="https://github.com/panther-0707/Redis#architecture" target="_blank" rel="noopener">Architecture &#8599;</a></p>
+          </div>
+        </article>
 
         <article class="card">
           <img src="assets/adventure-maps.png" alt="Adventure-maps screenshot" loading="lazy" onerror="this.remove()" />
