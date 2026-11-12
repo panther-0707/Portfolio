@@ -154,7 +154,7 @@ h3 { margin: 0 0 6px; }
 }
 
 /* SKILLS */
-.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 16px; }
 .skills div {
   background: var(--bg2); border: 1px solid var(--border);
   border-radius: var(--radius); padding: 18px;
