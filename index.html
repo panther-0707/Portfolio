@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -11,6 +11,18 @@
 <body>
   <header class="nav">
     <a href="#top" class="logo">KE<span>.</span></a>
+
+    <!-- Scroll-driven server: drains its UPS battery as you scroll (see rig.js) -->
+    <div id="stage" class="rack" data-state="ok" title="My home-lab server. Scroll to drain its battery.">
+      <div id="rig-wrap"><canvas id="rig" aria-hidden="true"></canvas></div>
+      <div class="bat">
+        <div id="bat-bar" class="bat-bar" role="progressbar" aria-label="Server UPS battery" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><i id="bat-fill"></i></div>
+        <span><b id="bat-pct">100%</b> <em id="bat-state">RUNNING</em></span>
+      </div>
+      <button id="reboot" class="btn" type="button" hidden>Reboot</button>
+      <div id="log" class="rack-log" aria-hidden="true"></div>
+    </div>
+
     <nav>
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
@@ -184,6 +196,8 @@
   </main>
 
   <footer>&#169; <span id="year"></span> Khalid Elbagir &#183; Edinburgh, UK</footer>
+  <script src="assets/three.min.js"></script>
+  <script src="rig.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

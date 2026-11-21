@@ -165,6 +165,44 @@ h3 { margin: 0 0 6px; }
 /* FOOTER */
 footer { text-align: center; color: var(--muted); padding: 60px 0 40px; font-size: .9rem; }
 
+/* NAV SERVER RIG (scroll-driven battery demo) */
+.rack { display: flex; align-items: center; gap: 12px; }
+#rig-wrap { width: 150px; height: 58px; }
+#rig { display: block; width: 100%; height: 100%; }
+.bat { display: flex; flex-direction: column; gap: 4px; min-width: 112px; font-family: "Fira Code", Consolas, monospace; font-size: .68rem; line-height: 1; color: var(--muted); }
+.bat b { color: var(--text); font-weight: 600; }
+.bat em { font-style: normal; letter-spacing: .04em; }
+.bat-bar { height: 6px; border-radius: 999px; background: var(--bg2); border: 1px solid var(--border); overflow: hidden; }
+.bat-bar i { display: block; height: 100%; width: 100%; background: #7ee787; transition: width .12s linear, background .3s; }
+.rack[data-state="warn"] .bat-bar i, .rack[data-state="warn"] .bat em { background: #ffb454; color: #ffb454; }
+.rack[data-state="crit"] .bat-bar i, .rack[data-state="crit"] .bat em { background: #ff5d5d; color: #ff5d5d; }
+.rack[data-state="off"] .bat-bar i { background: var(--muted); }
+.rack[data-state="off"] .bat em { color: var(--muted); }
+.rack[data-state="warn"] .bat em, .rack[data-state="crit"] .bat em { background: none; }
+.rack .btn { padding: 4px 12px; font-size: .78rem; border-radius: 8px; background: transparent; cursor: pointer; font-family: inherit; }
+.rack .btn[hidden] { display: none; }
+
+/* boot log: drops down under the nav on hover/focus */
+.rack-log {
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  width: min(430px, 92vw); padding: 10px 14px; margin-top: 8px;
+  background: var(--bg2); border: 1px solid var(--border); border-radius: 10px;
+  font-family: "Fira Code", Consolas, monospace; font-size: .74rem; line-height: 1.6; white-space: pre;
+  opacity: 0; visibility: hidden; transition: opacity .2s;
+}
+.rack:hover .rack-log, .rack:focus-within .rack-log { opacity: 1; visibility: visible; }
+.rack-log .ok { color: #7ee787; }
+.rack-log .warn { color: #ffb454; }
+.rack-log .crit { color: #ff5d5d; }
+.rack-log .off { color: var(--muted); }
+@media (max-width: 900px) {
+  .bat em, .rack-log { display: none; }
+  .bat { min-width: 56px; }
+}
+@media (max-width: 420px) {
+  #rig-wrap { width: 110px; height: 44px; }
+}
+
 /* FADE IN */
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s, transform .6s; }
 .reveal.show { opacity: 1; transform: none; }
