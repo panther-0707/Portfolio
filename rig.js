@@ -18,7 +18,7 @@
   var STATE_TXT = { ok: "RUNNING", warn: "LOW BATTERY", crit: "CRITICAL: SAVING STATE", off: "HALTED: POWER OFF" };
   var COL = { ok: 0x7ee787, warn: 0xffb454, crit: 0xff5d5d, off: 0x000000 };
   var LOG = [
-    [100, "ok", "[  ok  ] eufs-rack-01 booted, mains connected"],
+    [100, "ok", "[  ok  ] server-rack-01 booted, mains connected"],
     [90, "ok", "[  ok  ] ups: running on battery"],
     [80, "ok", "[  ok  ] docker: 6 containers healthy"],
     [70, "warn", "[ warn ] chassis: vibration detected"],
